@@ -31,9 +31,9 @@
             <FontAwesomeIcon glyphName="EYE_SLASH" layoutX="146.0" layoutY="153.0" size="40" />
             </children>
         </AnchorPane>
-        <Label layoutX="196.0" layoutY="14.0" prefHeight="50.0" prefWidth="207.0" text="Авторизация" textFill="WHITE">
+        <Label layoutX="196.0" layoutY="14.0" prefHeight="50.0" prefWidth="210.0" text="Авторизация" textFill="WHITE">
             <font>
-                <Font name="Monotype Corsiva" size="39.0" />
+                <Font name="Monotype Corsiva" size="35.0" />
             </font>
         </Label>
           <Button fx:id="Registration" layoutX="490.0" layoutY="14.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="96.0" style="-fx-background-color: #d2a9a9;" text="Регистрация" textFill="#13392f">

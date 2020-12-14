@@ -160,29 +160,6 @@ public class Admin {
         try {
             String productName = (String) sois.readObject();
 
-            String select = "Select idadmin from user.admin where productName = '" + productName + "'";
-            Statement statement4 = To_Database.connection.createStatement();
-            ResultSet resultSet4 = statement4.executeQuery(select);
-            int num = 0;
-            while(resultSet4.next())
-            {
-                num = resultSet4.getInt("idadmin");
-            }
-            resultSet4.close();
-
-            String sel = "DELETE FROM user.admin where productName = '" + productName + "'";
-            PreparedStatement pst1 = To_Database.connection.prepareStatement(sel);
-            pst1.execute();
-            pst1.close();
-            int place = 1;
-            if(num!=1) {
-                for (int i = num; i < kol; i++) {
-                    String sel2 = "UPDATE `admin` SET `idadmin` = '" + i + "' WHERE (`idadmin` = '" + (i + 1) + "')";
-                    PreparedStatement pst2 = To_Database.connection.prepareStatement(sel2);
-                    pst2.execute();
-                    place = i;
-                }
-            }
             String productName1 = (String) sois.readObject();
             String price = (String) sois.readObject();
             String weight = (String) sois.readObject();
@@ -192,20 +169,8 @@ public class Admin {
             String nutritionalValue = (String) sois.readObject();
             String composition = (String) sois.readObject();
 
-            String sel1 = "INSERT INTO user.admin (idadmin, productName, price, weight, protein, fats, carbohydrates, nutritionalValue, composition, valid, account) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-
-            PreparedStatement pst = To_Database.connection.prepareStatement(sel1);
-            pst.setInt(1, place);
-            pst.setString(2, productName1);
-            pst.setString(3, price);
-            pst.setString(4, weight);
-            pst.setString(5, protein);
-            pst.setString(6, fats);
-            pst.setString(7, carbohydrates);
-            pst.setString(8, nutritionalValue);
-            pst.setString(9, composition);
-            pst.setString(10, "-");
-            pst.setString(11, account);
+            String update = "UPDATE user.admin SET  productName =' " + productName1 + "', price = '" + price + "', weight = '" + weight + "', protein = '" + protein + "', fats = '" + fats  + "', carbohydrates = '" + carbohydrates + "', nutritionalValue = '" + nutritionalValue + "', composition = '" + composition + "' WHERE (productName = '" + productName + "')";
+            PreparedStatement pst = To_Database.connection.prepareStatement(update);
 
             pst.execute();
             pst.close();

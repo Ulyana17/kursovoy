@@ -49,6 +49,22 @@ public class AddProduct {
     @FXML
     private TextField composition;
 
+    public static String Name1;
+
+    public static double price1;
+
+    public static double weight1;
+
+    public static double protein1;
+
+    public static double fats1;
+
+    public static double carbohydrates1;
+
+    public static double nutritionalValue1;
+
+    public static String composition1;
+
     @FXML
     private Button AddProd;
 
@@ -91,11 +107,14 @@ public class AddProduct {
         }
         else if(Admin.c == 1)
         {
-            if(Admin.choice == 1)
-            {
-                Name.setText(Admin.product.getProductName());
-                composition.setText(Admin.product.getComposition());
-            }
+            Name.setText(Admin.product.getProductName());
+            Price.setText(String.valueOf(Admin.product.getPrice()));
+            weight.setText(String.valueOf(Admin.product.getWeight()));
+            protein.setText(String.valueOf(Admin.product.getProtein()));
+            fats.setText(String.valueOf(Admin.product.getFats()));
+            carbohydrates.setText(String.valueOf(Admin.product.getCarbohydrates()));
+            nutritionalValue.setText(String.valueOf(Admin.product.getNutritionalValue()));
+            composition.setText(Admin.product.getComposition());
             AddProd.setText("Редактировать");
             AddProd.setOnAction(actionEvent -> {
                 if (validateFields() && validateProductName() && validateProductCarbohydrates() && validateProductComposition()
@@ -151,7 +170,7 @@ public class AddProduct {
     }
     private boolean validateProductPrice()
     {
-        Pattern p = Pattern.compile("^[ 0-9]+$");
+        Pattern p = Pattern.compile("^[ 0-9]*[.,]?[0-9]+$");
         Matcher m = p.matcher(Price.getText());
         if(m.matches() && Double.parseDouble(Price.getText()) < 100000 && Double.parseDouble(Price.getText()) > 0)
         {
@@ -169,7 +188,7 @@ public class AddProduct {
     }
     private boolean validateProductWeight()
     {
-        Pattern p = Pattern.compile("^[ 0-9]+$");
+        Pattern p = Pattern.compile("^[ 0-9]*[.,]?[0-9]+$");
         Matcher m = p.matcher(weight.getText());
         if(m.matches() && Double.parseDouble(weight.getText()) < 10000 && Double.parseDouble(weight.getText()) > 0)
         {
@@ -187,7 +206,7 @@ public class AddProduct {
     }
     private boolean validateProductProtein()
     {
-        Pattern p = Pattern.compile("^[ 0-9]+$");
+        Pattern p = Pattern.compile("^[ 0-9]*[.,]?[0-9]+$");
         Matcher m = p.matcher(protein.getText());
         if(m.matches() && Double.parseDouble(protein.getText()) < 1000 && Double.parseDouble(protein.getText()) > 0)
         {
@@ -205,7 +224,7 @@ public class AddProduct {
     }
     private boolean validateProductFats()
     {
-        Pattern p = Pattern.compile("^[ 0-9]+$");
+        Pattern p = Pattern.compile("^[ 0-9]*[.,]?[0-9]+$");
         Matcher m = p.matcher(fats.getText());
         if(m.matches() && Double.parseDouble(fats.getText()) < 1000 && Double.parseDouble(fats.getText()) > 0)
         {
@@ -223,7 +242,7 @@ public class AddProduct {
     }
     private boolean validateProductCarbohydrates()
     {
-        Pattern p = Pattern.compile("^[ 0-9]+$");
+        Pattern p = Pattern.compile("^[ 0-9]*[.,]?[0-9]+$");
         Matcher m = p.matcher(carbohydrates.getText());
         if(m.matches() && Double.parseDouble(carbohydrates.getText()) < 1000 && Double.parseDouble(carbohydrates.getText()) > 0)
         {
@@ -241,7 +260,7 @@ public class AddProduct {
     }
     private boolean validateProductNutritionalValue()
     {
-        Pattern p = Pattern.compile("^[ 0-9]+$");
+        Pattern p = Pattern.compile("^[ 0-9]*[.,]?[0-9]+$");
         Matcher m = p.matcher(nutritionalValue.getText());
         if(m.matches() && Double.parseDouble(nutritionalValue.getText()) < 10000 && Double.parseDouble(nutritionalValue.getText()) > 0)
         {
